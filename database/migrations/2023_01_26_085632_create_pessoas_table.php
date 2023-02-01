@@ -16,13 +16,16 @@ return new class extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome', 50);
-            $table->string('email', 50);
-            $table->string('contato', 50);
-            $table->string('senha', 50);
-            $table->string('doc', 50);
-            $table->char('tipo', 1);
-            $table->char('status', 1);
+            $table->string('nome', 50)-> nullable();
+            $table->string('email', 50)-> nullable();
+            $table->string('contato', 50)-> nullable();
+            $table->string('senha', 50)-> nullable();
+            $table->string('doc', 50)-> unique();
+            $table->char('tipo', 1)-> nullable();
+            $table->boolean('status')->nullable();
+            $table->char('uf', 2)-> nullable();
+            $table->string('cidade', 50)-> nullable();
+           
         });
     }
 
