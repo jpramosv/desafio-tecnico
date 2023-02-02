@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Titulo;
+use App\Models\Pessoa;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class TituloController extends Controller
@@ -12,9 +14,12 @@ class TituloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        echo 'ué';
+        $titulo = Titulo::paginate(3);
+       
+        
+        return view('app.titulo.index', ['titulos' => $titulo, 'request'=> $request->all()]);
     }
 
     /**
@@ -24,7 +29,9 @@ class TituloController extends Controller
      */
     public function create()
     {
-        echo 'ué';
+        $pessoas = Pessoa::all();
+        $categorias = categoria::all();
+        return view('app/titulo/salvar_titulo',['pessoas'=>$pessoas, 'categorias'=>$categorias]);
     }
 
     /**

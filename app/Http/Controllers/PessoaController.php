@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Pessoa;
 
+
 class PessoaController extends Controller
 {
     public function index()
@@ -25,36 +26,7 @@ class PessoaController extends Controller
         return view('app.pessoa.listar', ['pessoas' => $pessoas]);
     }
 
-    public function adicionar(Request $request){
-
-        print_r($request->all());
-        print_r('teste');
-
-        if($request->input('_token') != '')
-        {
-          $regras=[
-            'nome' => 'required|min:3|max:40',
-            'contato' => 'required',
-            'email' => 'required',
-            'doc' => 'required',
-            'tipo' =>'required'
-          ]; 
-
-          $feedback = [
-            'required' => 'O Campo:atribute deve ser preenchido'
-          ];
-
-          $request -> validate($regras, $feedback);
-
-          
-          
-          
-        }
-        $pessoa = new Pessoa();
-        $pessoa->create($request->all());
-        return view('app.pessoa.adicionar');
-    }
-
+ 
     public function salvar(Request $request){
      
       $msg = '';
