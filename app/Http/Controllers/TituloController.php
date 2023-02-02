@@ -16,8 +16,7 @@ class TituloController extends Controller
      */
     public function index(Request $request)
     {
-        $titulo = Titulo::paginate(3);
-       
+        $titulo = Titulo::paginate(10);       
         
         return view('app.titulo.index', ['titulos' => $titulo, 'request'=> $request->all()]);
     }
@@ -77,11 +76,11 @@ class TituloController extends Controller
         }
         
         $request->request->add(['status' => 'p']);
-        echo 'foiiiiiiii';
-        print_r('??????????????????????????????????');
+     
         Titulo::create($request->all());
 
-        redirect()->route('titulo.index');
+        return redirect()->route('titulo.index');
+        
     }
 
     /**
@@ -92,7 +91,7 @@ class TituloController extends Controller
      */
     public function show(Titulo $titulo)
     {
-        //
+        return view('app/titulo/show_titulos',['titulo'=>$titulo]);
     }
 
     /**

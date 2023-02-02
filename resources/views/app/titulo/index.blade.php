@@ -26,6 +26,9 @@
               <th>Tipo Pgto</th>
               <th>Movimentação</th>
               <th>Status</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
 
@@ -34,14 +37,16 @@
             <tr>
               <td>{{$titulo->desc}}</td>
               <td>{{$titulo->valor}}</td>
+              <td>{{$titulo->obs}}</td>
               <td>{{$titulo->data_venc}}</td>
               <td>{{$titulo->data_pag_rec}}</td>
               <td>{{$titulo->form_pag}}</td>
               <td>{{$titulo->tipo_pag}}</td>
               <td>{{$titulo->movim}}</td>
               <td>{{$titulo->status}}</td>
-              <td><a href="">Excluir</a></td>
+              <td><a href="{{ route('titulo.show',['titulo'=> $titulo->id]) }}">Visualizar</a></td>
               <td><a href="">Editar</a></td>
+              <td><a href="">Excluir</a></td>
             </tr>
            @endforeach
        </tbody>
