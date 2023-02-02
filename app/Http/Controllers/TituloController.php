@@ -42,7 +42,46 @@ class TituloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $regras=[
+            'desc' => 'required|max:200',
+            'valor' => 'required',
+            'data_venc'=>'required',
+            'form_pag' => 'required',
+            'tipo_pag' => 'required',
+            'movim' => 'required'
+           ]; 
+
+          $feedback = [
+            'required' => 'O Campo :attribute deve ser preenchido',
+            'desc' => 'O Campo deve ter no máximo 200 caracteres',           
+            
+          ];
+
+          $request -> validate($regras, $feedback);
+       
+
+        if($request->movim == 'checked'){
+
+            $request->merge([
+                'movim' => 'C'            
+            ]);        
+          
+
+        } 
+        else{
+            $request->merge([
+                'movim' => 'D'            
+            ]);          
+           
+        }
+        
+        $request->request->add(['status' => 'p']);
+        echo 'foiiiiiiii';
+        print_r('??????????????????????????????????');
+        Titulo::create($request->all());
+
+        redirect()->route('titulo.index');
     }
 
     /**
