@@ -102,7 +102,10 @@ class TituloController extends Controller
      */
     public function edit(Titulo $titulo)
     {
-        echo 'editou?';
+        $categorias = Categoria::all();
+        $pessoas = Pessoa::all();
+
+       return view('app.titulo.edit_titulo',['titulo'=>$titulo, 'pessoas'=>$pessoas , 'categorias'=>$categorias]);
     }
 
     /**
@@ -114,7 +117,24 @@ class TituloController extends Controller
      */
     public function update(Request $request, Titulo $titulo)
     {
-        //
+        
+        if($request->movim == 'checked'){
+
+            $request->merge([
+                'movim' => 'C'            
+            ]);        
+          
+
+        } 
+        else{
+            $request->merge([
+                'movim' => 'D'            
+            ]);          
+           
+        }
+
+       $titulo->update($request->all());
+       return redirect()->route('titulo.show', ['titulo'=>$titulo->id]);
     }
 
     /**
@@ -125,6 +145,7 @@ class TituloController extends Controller
      */
     public function destroy(Titulo $titulo)
     {
-        //
+        $titulo->delete();
+        return redirect()->route('titulo.index');
     }
 }
