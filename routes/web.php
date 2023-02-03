@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-Route::get('/', [\App\Http\Controllers\PrincipalController::class,'principal'])->name('site.index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/categoria', [\App\Http\Controllers\CategoriaController::class,'categoria'])->name('site.categoria');
 
@@ -41,5 +41,9 @@ Route::prefix('/app')->group(function(){
 });
 
 
+
+
+
+Auth::routes();
 
 
