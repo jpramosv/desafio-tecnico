@@ -1,5 +1,6 @@
-<div>
+@extends('layouts.app')
 
+@section('content') 
 </div>
     <ul>
       <li><a href="{{ route('titulo.index')}}">Voltar</a></li>
@@ -47,7 +48,7 @@
 </div>
 </div>
     
-
+@endsection
 
   
 

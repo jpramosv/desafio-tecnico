@@ -8,10 +8,14 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function categoria(Request $request){
 
        
-        return view('site.categoria');
+        return view('site/categoria_salvar');
 
     }
 
@@ -24,7 +28,7 @@ class CategoriaController extends Controller
         ]
             );
         Categoria::create($request->all());
-        return redirect()->route('site.index');
+        return view('site/categoria_salvar');
     }
     
 

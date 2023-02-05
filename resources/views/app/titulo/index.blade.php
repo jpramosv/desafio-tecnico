@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content') 
+
 <h3>Listar titulos</h3>
 
   <div class="conteudo-pagina">
@@ -62,3 +66,4 @@
      
     </div>
   </div>
+@endsection

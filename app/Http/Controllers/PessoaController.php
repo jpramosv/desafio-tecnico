@@ -16,12 +16,12 @@ class PessoaController extends Controller
     
     public function listar(Request $request)
     {
-       $pessoas = Pessoa::where('nome','like','%'.$request->input('nome').'%')
-       ->where('email','like','%'.$request->input('email').'%')
-       ->where('doc','like','%'.$request->input('doc').'%')       
-       ->where('uf','like','%'.$request->input('uf').'%')
-       ->where('cidade','like','%'.$request->input('cidade').'%')
-       ->get();
+       $pessoas = Pessoa::where('nome','like', "%{$request->search}%")
+       ->orWhere('email','like',"%{$request->search}%")
+       ->orWhere('doc','like',"%{$request->search}%")       
+       ->orWhere('uf','like',"%{$request->search}%")
+       ->orWhere('cidade','like',"%{$request->search}%")
+       ->paginate();
         
         return view('app.pessoa.listar', ['pessoas' => $pessoas]);
     }
@@ -78,6 +78,7 @@ class PessoaController extends Controller
           $pessoa -> cidade = $request->input('cidade');
           $pessoa -> email = $request->input('email');
           $pessoa -> doc = $request->input('doc');
+          $pessoa -> status = 'A';
           $pessoa->save();
 
           $msg = 'Pessoa cadastrado com sucesso!';
@@ -112,7 +113,7 @@ class PessoaController extends Controller
       
     }
 
-    public function excluir($id){
+    public function excluir($id){                   
       Pessoa::find($id)->delete();
       return redirect()->route('app.pessoa');
     }

@@ -1,10 +1,9 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div>
 
-</div>
-    <ul>
-      <li><a href="{{ route('titulo.index')}}">Voltar</a></li>
-    </ul>
-<div>
 <h1>Titulos</h1>
 <p>Registre Titulos<p>
 
@@ -51,6 +50,7 @@
 <button type="submit">ENVIAR</button>
 </form>
 </div>
+@endsection 
     
 
 

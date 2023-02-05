@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content') 
 <div class="contato">
 <h1>Pessoas</h1>
 <p>Registre pessoas<p>
@@ -31,6 +34,7 @@
 <button type="submit">ENVIAR</button>
 </form>
 </div>
+@endsection
     
 
 

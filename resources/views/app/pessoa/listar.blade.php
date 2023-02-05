@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content') 
 <h3>Pessoas Listar</h3>
 
   <div class="conteudo-pagina">
@@ -7,10 +10,11 @@
 
      <div class = "menu">
         <ul>
-          <li><a href=""></a>Novo</li>
+          <li><a href="{{ route('app.pessoa.salvar')}}">Novo</a></li>
           <li><a href=""></a>Consulta</li>
         </ul>
     </div>
+
 
     <div style="width: 90%; margin-left: auto; margin-right: auto;">
       <table border="1" width="100%">
@@ -42,3 +46,4 @@
      
     </div>
   </div>
+@endsection   

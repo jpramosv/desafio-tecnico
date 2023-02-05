@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/categoria', [\App\Http\Controllers\CategoriaController::class,'categoria'])->name('site.categoria');
 
-Route::post('/categoria', [\App\Http\Controllers\CategoriaController::class,'salvar'])->name('site.categoria');
+
+
 
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
@@ -32,7 +32,8 @@ Route::prefix('/app')->group(function(){
     Route::post('/pessoas/salvar', [\App\Http\Controllers\PessoaController::class,'salvar'])->name('app.pessoa.salvar');
     Route::get('/pessoas/editar/{id}/{msg?}', [\App\Http\Controllers\PessoaController::class,'editar'])->name('app.pessoa.editar');
     Route::get('/pessoas/excluir/{id}', [\App\Http\Controllers\PessoaController::class,'excluir'])->name('app.pessoa.excluir');
-    Route::get('/categorias', function(){ return 'Categorias'; })->name('app.categorias');
+    Route::get('/categoria', [\App\Http\Controllers\CategoriaController::class,'categoria'])->name('app.categoria.categoria_salvar');
+    Route::post('/categoria', [\App\Http\Controllers\CategoriaController::class,'salvar'])->name('app.categoria.categoria_salvar');
     Route::get('/transacoes', function(){ return 'Transações'; })->name('app.transacoes');
 
     //titulos

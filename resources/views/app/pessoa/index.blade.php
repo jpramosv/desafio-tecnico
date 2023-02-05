@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content') 
 <h3>Pessoas</h3>
 
   <div class="conteudo-pagina">
@@ -22,4 +25,6 @@
         </form>
     </div>
   </div>
+@endsection   
+
 
