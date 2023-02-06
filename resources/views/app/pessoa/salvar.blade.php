@@ -14,7 +14,7 @@
 <input name='email' value = "{{ $pessoa->email ?? old('email')}}" type="text" placeholder="Email">
 {{ $errors->has('email') ? $errors->first('email'): ''}}
 <br>
-<input name='doc' value = "{{$pessoa->doc ?? old('doc')}}" type="text" placeholder="CPNF/CNPJ">
+<input onkeyup ="myFunction()" id = 'cpfcnpj' name='doc' value = "{{$pessoa->doc ?? old('doc')}}" type="text" placeholder="CPNF/CNPJ">
 {{ $errors->has('doc') ? $errors->first('doc'): ''}}
 <br>
 <h4>TIPO</h4>
