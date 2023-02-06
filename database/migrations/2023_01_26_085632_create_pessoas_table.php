@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('senha', 50)-> nullable();
             $table->string('doc', 50)-> unique();
             $table->char('tipo', 1)-> nullable();
-            $table->boolean('status')->nullable();
+            $table->char('status', 1)->nullable();
             $table->char('uf', 2)-> nullable();
             $table->string('cidade', 50)-> nullable();
            
