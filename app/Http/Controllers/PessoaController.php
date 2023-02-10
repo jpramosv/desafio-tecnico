@@ -59,16 +59,16 @@ class PessoaController extends Controller
 
           $pessoa = new Pessoa();
           
-          if($request->cpf == 'checked'){
+          if($request->status == 'checked'){
 
-            $pessoa->tipo = 0;  
+            $pessoa->status = 'A';  
             
           
 
         } 
         else{
 
-            $pessoa->tipo = 1;
+            $pessoa->status = 'B';
             
            
         }   
@@ -78,7 +78,7 @@ class PessoaController extends Controller
           $pessoa -> cidade = $request->input('cidade');
           $pessoa -> email = $request->input('email');
           $pessoa -> doc = $request->input('doc');
-          $pessoa -> status = 'A';
+          $pessoa -> contato = $request->input('contato');
           $pessoa->save();
 
           $msg = 'Pessoa cadastrado com sucesso!';
@@ -118,3 +118,54 @@ class PessoaController extends Controller
       return redirect()->route('app.pessoa');
     }
 }
+?>
+
+  <script>
+
+
+//função pra verificar cpf ou cnpj
+function validaDoc(){
+  let tamanho = document.getElementById('inp').value.length
+  
+  if(tamanho>13){
+    document.getElementById('inp').value = masks.cnpj(document.getElementById('inp').value)
+  }else{
+    document.getElementById('inp').value = masks.cpf(document.getElementById('inp').value)
+  }
+   
+  
+}
+
+function validaCont(){
+  document.getElementById('contato').value = masks.phone(document.getElementById('contato').value)
+}
+//mascaras
+const masks = {
+  cpf (value) {
+    return value
+      .replace(/\D+/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+      .replace(/(-\d{2})\d+?$/, '$1')
+  },
+  cnpj (value) {
+    return value
+      .replace(/\D+/g, '')
+      .replace(/(\d{2})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1/$2')
+      .replace(/(\d{4})(\d)/, '$1-$2')
+      .replace(/(-\d{2})\d+?$/, '$1')
+  },
+  phone (value) {
+    return value
+      .replace(/\D+/g, '')
+      .replace(/(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d{4})(\d)/, '$1-$2')
+      .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+      .replace(/(-\d{4})\d+?$/, '$1')
+  }
+}
+
+</script>
